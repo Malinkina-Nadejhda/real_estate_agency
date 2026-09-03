@@ -5,12 +5,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Flat(models.Model):
-    owner_pure_phone = PhoneNumberField(
-        verbose_name = "Нормализованный номер владельца",
-        region="RU",
-        blank=True,
-        null=True,
-    )
     new_building = models.BooleanField(
         verbose_name="Новостройка",
         null=True,
