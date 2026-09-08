@@ -9,6 +9,7 @@ class Flat(models.Model):
         verbose_name="Новостройка",
         null=True,
         blank=True,
+        db_index=True,
     )
     created_at = models.DateTimeField(
         'Когда создано объявление',
