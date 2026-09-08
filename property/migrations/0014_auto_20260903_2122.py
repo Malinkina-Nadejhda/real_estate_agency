@@ -8,11 +8,14 @@ def link_flats_to_owner(apps, schema_editor):
     Owner = apps.get_model("property", "Owner")
     flats = Flat.objects.all()
     for flat in flats:
-        if not flat.owner or not flat.owners_phonenumber:
+        if not flat.owner:
             continue
         owner, created = Owner.objects.get_or_create(
             name=flat.owner,
-            owners_phonenumber=flat.owners_phonenumber,
+            defaults={
+                "owners_phonenumber":flat.owners_phonenumber,
+                "owner_pure_phone":flat.owner_pure_phone,
+            }
         )
         owner.flats.add(flat)
 
